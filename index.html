@@ -90,6 +90,11 @@ a{color:inherit}
 [data-state="started"] .btn{background:transparent;color:var(--ac)}
 [data-state="done"] .btn{background:rgba(63,207,142,.12);border-color:rgba(63,207,142,.4);color:var(--ok);font:500 13px var(--mono)}
 .streak{font:500 12px var(--mono);color:var(--muted);white-space:nowrap}
+  /* a bad day: red pill and a red cross instead of the green tick */
+.card.lost .btn{background:rgba(255,93,115,.12);border-color:rgba(255,93,115,.45);color:#ff5d73}
+.card.lost .tick{background:#ff5d73;color:#3a0610}
+/* long quips wrap instead of spilling out of the card */
+[data-state="done"] .btn{height:auto;min-height:36px;padding:7px 16px;white-space:normal;line-height:1.3}
 .streak b{color:var(--text);font-weight:500}
 
 /* per-game themes, borrowed from each game's own palette */
@@ -222,6 +227,16 @@ const GAMES = [
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: `${solved}/3 riddles`};
    }},
 ];
+  /* When does a finished game count as a bad day? Lost, or scored zero. */
+const LOST = {
+  dub:  d => { const s = get('dtl-state-v3');      const r = s && s.day === d ? s.results || [] : []; return r.length > 0 && r.every(x => x === 'miss'); },
+  geo:  d => { const s = get('geoclue-' + d);      return !!s && s.status === 'lost'; },
+  peck: d => { const s = get('pecking-state');     return !!s && s.day === d && s.status === 'lost'; },
+  teth: d => { const s = get('tethered-state');    return !!s && s.day === d && s.status === 'lost'; },
+  code: d => { const s = get('codebreaker-state'); return !!s && s.day === d && (s.status === 'lost' || s.status === 'boom'); },
+  ridl: d => { const s = get('ridlrush-state');    const r = s && s.day === d ? s.results || [] : []; return r.length > 0 && !r.some(x => x && (x.k === 'clean' || x.k === 'helped')); },
+};
+const CROSS = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg>';
 const COLOURS = {dub:'#ffd98a', geo:'#2dd4bf', peck:'#ff5fa2', teth:'#b591ff', code:'#3fcf8e', ridl:'#e8b86a'};
 
 /* ================= Artwork ================= */
@@ -319,6 +334,9 @@ function render() {
     if (r.done) done++;
     const card = $('card-' + g.id);
     card.dataset.state = state;
+        let lost = false; try { lost = r.done && LOST[g.id](d); } catch (e) {}
+    card.classList.toggle('lost', lost);
+    card.querySelector('.tick').innerHTML = lost ? CROSS : TICK;
     card.querySelector('.no').textContent = 'No. ' + d;
     card.querySelector('.btn').textContent = state === 'done' ? r.result : state === 'started' ? 'Continue' : 'Play';
     card.querySelector('.streak').innerHTML = r.streak > 0 ? `🔥 <b>${r.streak}</b> day${r.streak > 1 ? 's' : ''}` : '';
