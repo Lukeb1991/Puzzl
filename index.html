@@ -189,7 +189,7 @@ const GAMES = [
      const st = get('geoclue-stats') || {}, day = get('geoclue-' + d);
      const n = day && day.guesses ? day.guesses.length : 0, won = day && day.status === 'won';
      return {done: st.lastPlayed === d, started: n > 0,
-             streak: st.lastWon >= d - 1 ? st.streak || 0 : 0, result: won ? `Found in ${n}` : 'Not today'};
+             streak: st.lastWon >= d - 1 ? st.streak || 0 : 0, result: won ? `Found in ${n}` : 'You got lost!'};
    }},
   {id:'peck', name:'Pecking Order', kind:'Ranking', tag:'Who rules the roost?', meta:'5 things · 1 order',
    url:'https://lukeb1991.github.io/Pecking-Order/', launch:'2026-10-06', read: d => {
@@ -203,7 +203,7 @@ const GAMES = [
      const st = get('tethered-stats') || {}, s = get('tethered-state');
      const today = s && s.day === d ? s : null;
      return {done: st.lastDay === d, started: !!today && (today.guesses || []).length > 0,
-             streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: today && today.status === 'won' ? 'All tied up' : 'Snapped'};
+             streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: today && today.status === 'won' ? 'Nice and tidy' : 'Too many loose ends'};
    }},
   {id:'code', name:'Codebreaker', kind:'Word', tag:"Crack today's code", meta:'5 dials · 3 minutes',
    url:'https://lukeb1991.github.io/Codebreaker/', launch:'2026-10-06', read: d => {
