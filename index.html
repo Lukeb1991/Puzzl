@@ -163,8 +163,8 @@ a{color:inherit}
   <ul class="grid" id="grid"></ul>
 
   <footer class="foot-site">
-    <span><b>Puzzl</b>&nbsp; Daily puzzles, made in Britain.</span>
-    <span>New set every morning at 7am UK time.</span>
+    <span><b>Puzzl</b>&nbsp; Livening up your morning coffee since 2026.</span>
+    <span>New puzzles. Every morning. 7am.</span>
   </footer>
 </div>
 
@@ -328,12 +328,12 @@ function render() {
   const [a, b] = greeting();
   if (done === GAMES.length) {
     $('hello').innerHTML = 'Full <em>house.</em>';
-    $('sub').textContent = "All six done for today. Fresh puzzles land at 7am.";
+    $('sub').textContent = "Boom. All six done! Same time tomorrow?";
   } else {
     $('hello').innerHTML = `${a} <em>${b}</em>`;
     $('sub').textContent = done === 0
-      ? 'Six British puzzles, fresh every morning at 7. How many can you crack today?'
-      : `${GAMES.length - done} still to play today. Keep those streaks alive.`;
+      ? 'Your fresh batch of 6 puzzles is waiting. You ready??'
+      : `${GAMES.length - done} Giving up already? Keep those streaks alive.`;
   }
   $('pcount').innerHTML = `<b>${done}</b> of ${GAMES.length} played`;
   tick();
