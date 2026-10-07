@@ -186,7 +186,7 @@ const RESET_HOUR = 7;   // ← all six games switch to a new puzzle at this hour
    this page can see that saved progress and show ticks and streaks. */
 const GAMES = [
   {id:'dub', name:'Dub Titles', kind:'Film', tag:'3 films lost in translation', meta:'3 films · 3 lives',
-   url:'https://lukeb1991.github.io/Dub-Titles-2/', launch:'2026-10-05', read: d => {
+   url:'https://lukeb1991.github.io/Dub-Titles-2/', launch:'2026-10-07', read: d => {
      const st = get('dtl-stats-v2') || {}, s = get('dtl-state-v3');
      const today = s && s.day === d ? s : null, res = today ? today.results || [] : [];
      const named = res.filter(r => r !== 'miss').length;
@@ -194,28 +194,28 @@ const GAMES = [
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: `${named}/3 films`};
    }},
   {id:'geo', name:'Geo Clue', kind:'Geography', tag:'Where in the world?', meta:'5 clues · 1 country',
-   url:'https://lukeb1991.github.io/GeoClue/', launch:'2026-10-05', read: d => {
+   url:'https://lukeb1991.github.io/GeoClue/', launch:'2026-10-07', read: d => {
      const st = get('geoclue-stats') || {}, day = get('geoclue-' + d);
      const n = day && day.guesses ? day.guesses.length : 0, won = day && day.status === 'won';
      return {done: st.lastPlayed === d, started: n > 0,
              streak: st.lastWon >= d - 1 ? st.streak || 0 : 0, result: won ? `Found in ${n}` : 'You got lost!'};
    }},
   {id:'peck', name:'Pecking Order', kind:'Ranking', tag:'Who rules the roost?', meta:'5 things · 1 order',
-   url:'https://lukeb1991.github.io/Pecking-Order/', launch:'2026-10-06', read: d => {
+   url:'https://lukeb1991.github.io/Pecking-Order/', launch:'2026-10-07', read: d => {
      const st = get('pecking-stats') || {}, s = get('pecking-state');
      const today = s && s.day === d ? s : null, n = today && today.tries ? today.tries.length : 0;
      return {done: st.lastDay === d, started: n > 0,
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: today && today.status === 'won' ? `Sorted in ${n}` : 'You Cracked!'};
    }},
-  {id:'teth', name:'Tethered', kind:'Connections', tag:'Tie up the loose ends', meta:'16 tags · 4 links',
-   url:'https://lukeb1991.github.io/Tethered/', launch:'2026-10-06', read: d => {
+  {id:'teth', name:'Tethered', kind:'Association', tag:'Tie up the loose ends', meta:'16 tags · 4 links',
+   url:'https://lukeb1991.github.io/Tethered/', launch:'2026-10-07', read: d => {
      const st = get('tethered-stats') || {}, s = get('tethered-state');
      const today = s && s.day === d ? s : null;
      return {done: st.lastDay === d, started: !!today && (today.guesses || []).length > 0,
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: today && today.status === 'won' ? 'Nice and tidy' : 'Too many loose ends'};
    }},
   {id:'code', name:'Codebreaker', kind:'Word', tag:"Crack today's code", meta:'5 dials · 3 minutes',
-   url:'https://lukeb1991.github.io/Codebreaker/', launch:'2026-10-06', read: d => {
+   url:'https://lukeb1991.github.io/Codebreaker/', launch:'2026-10-07', read: d => {
      const st = get('codebreaker-stats') || {}, s = get('codebreaker-state');
      const today = s && s.day === d ? s : null, n = today && today.guesses ? today.guesses.length : 0;
      const result = !today ? 'Done' : today.status === 'won' ? `Cracked in ${n}` : today.status === 'boom' ? 'Boom' : 'Locked out';
@@ -223,7 +223,7 @@ const GAMES = [
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result};
    }},
   {id:'ridl', name:'Ridl Rush', kind:'Riddles', tag:'Three riddles. Beat the sand.', meta:'3 riddles · 60s each',
-   url:'https://lukeb1991.github.io/RidlRush/', launch:'2026-10-06', read: d => {
+   url:'https://lukeb1991.github.io/RidlRush/', launch:'2026-10-07', read: d => {
      const st = get('ridlrush-stats') || {}, s = get('ridlrush-state');
      const today = s && s.day === d ? s : null, res = today ? today.results || [] : [];
      const solved = res.filter(r => r && (r.k === 'clean' || r.k === 'helped')).length;
