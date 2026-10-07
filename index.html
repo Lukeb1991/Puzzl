@@ -234,7 +234,7 @@ const GAMES = [
   /* When does a finished game count as a bad day? Lost, or scored zero. */
 const LOST = {
   dub:  d => { const s = get('dtl-state-v4');      const r = s && s.day === d ? s.results || [] : []; return r.length > 0 && r.every(x => x === 'miss'); },
-  geo:  d => { const s = get('geoclue-' + d);      return !!s && s.status === 'lost'; },
+  geo:  d => { const s = get('geoclue-v2-' + d);      return !!s && s.status === 'lost'; },
   peck: d => { const s = get('pecking-state');     return !!s && s.day === d && s.status === 'lost'; },
   teth: d => { const s = get('tethered-state');    return !!s && s.day === d && s.status === 'lost'; },
   code: d => { const s = get('codebreaker-state'); return !!s && s.day === d && (s.status === 'lost' || s.status === 'boom'); },
