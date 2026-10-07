@@ -185,9 +185,9 @@ const RESET_HOUR = 7;   // ← all six games switch to a new puzzle at this hour
    progress it saves in the browser. Because every game lives on lukeb1991.github.io,
    this page can see that saved progress and show ticks and streaks. */
 const GAMES = [
-  {id:'dub', name:'Dub Titles', kind:'Film', tag:'3 films lost in translation', meta:'3 films · 3 lives',
+  {id:'dub', name:'Dub Titles', kind:'Film', tag:'3 films lost in translation', meta:'3 films · 4 lives',
    url:'https://lukeb1991.github.io/Dub-Titles-2/', launch:'2026-10-07', read: d => {
-     const st = get('dtl-stats-v2') || {}, s = get('dtl-state-v3');
+     const st = get('dtl-stats-v2') || {}, s = get('dtl-state-v4');
      const today = s && s.day === d ? s : null, res = today ? today.results || [] : [];
      const named = res.filter(r => r !== 'miss').length;
      return {done: st.lastDay === d, started: !!today && (res.length > 0 || today.misses > 0 || today.idx > 0),
@@ -233,7 +233,7 @@ const GAMES = [
 ];
   /* When does a finished game count as a bad day? Lost, or scored zero. */
 const LOST = {
-  dub:  d => { const s = get('dtl-state-v3');      const r = s && s.day === d ? s.results || [] : []; return r.length > 0 && r.every(x => x === 'miss'); },
+  dub:  d => { const s = get('dtl-state-v4');      const r = s && s.day === d ? s.results || [] : []; return r.length > 0 && r.every(x => x === 'miss'); },
   geo:  d => { const s = get('geoclue-' + d);      return !!s && s.status === 'lost'; },
   peck: d => { const s = get('pecking-state');     return !!s && s.day === d && s.status === 'lost'; },
   teth: d => { const s = get('tethered-state');    return !!s && s.day === d && s.status === 'lost'; },
