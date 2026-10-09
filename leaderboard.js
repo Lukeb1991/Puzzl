@@ -7,8 +7,8 @@
    It uses GAMES, COLOURS, get, londonNow, dayNumber and RESET_HOUR from the main script. */
 (() => {
   /* ================= Settings ================= */
-  const SUPABASE_URL = 'PASTE_PROJECT_URL_HERE';        // ← e.g. https://abcdefgh.supabase.co
-  const SUPABASE_KEY = 'PASTE_PUBLIC_KEY_HERE';         // ← the anon public / publishable key (never the service_role key)
+  const SUPABASE_URL = 'https://eaojznfqcptctqgtvfbj.supabase.co';        // ← e.g. https://abcdefgh.supabase.co
+  const SUPABASE_KEY = 'sb_publishable_DsNChX74tHAfCAH-oL5a8w_7uigHhz-';         // ← the anon public / publishable key (never the service_role key)
 
   const ME_KEY = 'puzzl-league', SENT_KEY = 'puzzl-league-sent';
   const configured = /^https?:\/\/.+/.test(SUPABASE_URL) && !SUPABASE_KEY.startsWith('PASTE');
