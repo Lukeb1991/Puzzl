@@ -207,7 +207,7 @@ const GAMES = [
      return {done: st.lastDay === d, started: n > 0,
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: today && today.status === 'won' ? `Sorted in ${n}` : 'You Cracked!'};
    }},
-  {id:'teth', name:'Tethered', kind:'Wordplay', tag:'Tie up the loose ends', meta:'16 pieces · 4 words',
+  {id:'teth', name:'Tethered', kind:'Wordplay', tag:'Find the common thread', meta:'16 pieces · 4 words',
    url:'https://lukeb1991.github.io/Tethered/', launch:'2026-10-07', read: d => {
      const st = get('tethered-stats') || {}, s = get('tethered-state');
      const today = s && s.day === d ? s : null;
