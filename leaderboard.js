@@ -327,12 +327,12 @@
   function joinDialog(code) {
     const dlg = document.createElement('dialog'); dlg.className = 'lb-join';
     dlg.innerHTML = `<form method="dialog">
-      <h3>Join the leaderboard</h3>
-      <p>Pick a name your mates will recognise. Your results from each game will show up on the shared board.</p>
+      <h3>Think you can top the board?</h3>
+      <p>Pick a name your Puzzl Pals will recognise. Your scores will appear on the leaderboard as you play.</p>
       <input id="lbName" maxlength="16" autocomplete="nickname" placeholder="Your name" required>
       <div class="lb-err" id="lbErr"></div>
-      <p class="lb-hint">On a new phone? Use the same name to carry on where you left off.</p>
-      <div class="lb-actions"><button type="button" class="lb-cancel" id="lbNo">Not now</button><button type="submit" class="lb-go" id="lbGo">Join</button></div>
+      <p class="lb-hint">On a new device? Use the same name to carry on where you left off.</p>
+      <div class="lb-actions"><button type="button" class="lb-cancel" id="lbNo">Not now</button><button type="submit" class="lb-go" id="lbGo">I'm in!</button></div>
     </form>`;
     document.body.append(dlg);
     const name = dlg.querySelector('#lbName'), err = dlg.querySelector('#lbErr'), go = dlg.querySelector('#lbGo');
