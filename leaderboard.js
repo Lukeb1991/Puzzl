@@ -301,7 +301,7 @@
       </div>
       <div class="lb-foot">
         <span>Playing as <b>${esc(me.name)}</b>${lastErr ? ` · <span style="color:#ff5d73">Couldn't refresh</span>` : ''}</span>
-        <button class="lb-link" id="lbInvite" type="button">Invite a mate</button>
+        <button class="lb-link" id="lbInvite" type="button">Invite a Puzzl Pal</button>
       </div>
       <details class="lb-how"><summary>How points work</summary>
         <p>Each daily game is worth up to 100 points, so the best possible day is 600.
