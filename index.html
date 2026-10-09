@@ -223,13 +223,13 @@ const GAMES = [
              streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result};
    }},
   {id:'quid', name:'Quids In', kind:'Logic', tag:'Where quick thinking pays off', meta:'3 questions · £1 a second',
-   url:'https://lukeb1991.github.io/QuidsIn/', launch:'2026-10-10', read: d => {
+   url:'https://lukeb1991.github.io/QuidsIn/', launch:'2026-10-09', read: d => {
      const st = get('quidsin-stats') || {}, s = get('quidsin-state');
      const today = s && s.day === d ? s : null, res = today ? today.results || [] : [];
      const won = res.filter(r => r && (r.k === 'clean' || r.k === 'helped'));
      const bank = won.reduce((t, r) => t + (r.t || 0), 0);
      return {done: st.lastDay === d, started: !!today && (today.stage !== 'ready' || res.length > 0),
-             streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: won.length ? `£${bank} banked` : 'Went home with nothing'};
+             streak: st.lastDay >= d - 1 ? st.streak || 0 : 0, result: won.length ? `£${bank} banked` : 'Bus fair home'};
    }},
 ];
   /* When does a finished game count as a bad day? Lost, or scored zero. */
