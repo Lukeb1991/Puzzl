@@ -303,11 +303,14 @@
         <span>Playing as <b>${esc(me.name)}</b>${lastErr ? ` · <span style="color:#ff5d73">Couldn't refresh</span>` : ''}</span>
         <button class="lb-link" id="lbInvite" type="button">Invite a Puzzl Pal</button>
       </div>
-      <details class="lb-how"><summary>How points work</summary>
+      <details class="lb-how"><summary>How Puzzl Points work</summary>
         <p>Each daily game is worth up to 100 points, so the best possible day is 600.
-        Dub Titles: your score out of 30. Geo Clue: 100 for one clue, 20 less for each extra.
-        Pecking Order: 100, 67 or 33 by tries. Tethered: 100, minus 25 a mistake.
-        Codebreaker: 100 for one attempt, down to 17 for six. Quids In: your winnings out of £180.
+        Dub Titles: your score out of 30. 
+        Geo Clue: 100 for one clue, 20 less for each extra.
+        Pecking Order: 100, 67 or 33 by tries. 
+        Tethered: 100, minus 25 a mistake.
+        Codebreaker: 100 for one attempt, down to 17 for six. 
+        Quids In: your winnings out of £180.
         A loss scores 0. Results are sent when you come back to this page, and only your first go each day counts.
         Porkies is a bonus game and doesn't count towards the total.</p></details>`;
     document.getElementById('lbInvite').onclick = invite;
