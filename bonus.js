@@ -8,7 +8,7 @@
   const BONUS = {
     name: 'Porkies', kind: 'Deduction', tag: "Someone's telling porkies",
     meta: '4 suspects · 1 fibber', label: 'Work in progress',
-    url: 'https://lukeb1991.github.io/Porkies/', launch: '2026-10-08',
+    url: 'https://lukeb1991.github.io/Porkies/', launch: '2026-10-07',
   };
 
   /* Reads what Porkies saves in the browser */
